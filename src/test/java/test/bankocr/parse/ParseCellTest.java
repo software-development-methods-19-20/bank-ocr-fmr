@@ -29,10 +29,27 @@ public class ParseCellTest {
 
     @Test
     void twoCell(){
-        String zeroAsText =
+        String twoAsText =
                 " _ " +
                         " _|" +
                         "|_ ";
-        assertThat(new Cell(zeroAsText).toString(), is(equalTo(2)));
+        assertThat(new Cell(twoAsText).toString(), is(equalTo("2")));
+    }
+    @Test
+    void threeCell(){
+        String threeAsText =
+                " _ " +
+                " _|" +
+                " _|";
+        assertThat(new Cell(threeAsText).toString(), is(equalTo("3")));
+    }
+
+    @Test
+    void fourCell() {
+        String fourAsText =
+                "   " +
+                "|_|" +
+                "  |";
+        assertThat(new Cell(fourAsText).toString(), is(equalTo("4")));
     }
 }

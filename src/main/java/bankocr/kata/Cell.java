@@ -7,7 +7,7 @@ public class Cell {
                     "| |" +
                     "|_|";
 
-    private static final String UNO_CELL =
+    private static final String ONE_CELL =
                     "   " +
                     "  |" +
                     "  |";
@@ -16,6 +16,10 @@ public class Cell {
                     " _ " +
                     " _|" +
                     "|_ ";
+    private static final String THREE_CELL =
+                    " _ " +
+                    " _|" +
+                    " _|";
 
 private String cellAsText;
 
@@ -23,15 +27,17 @@ private String cellAsText;
         this.cellAsText = cellAsText;
     }
 
-
+@Override
 public String toString() {
 
         if(ZERO_CELL.equals(cellAsText))
             return "0";
-        else if(UNO_CELL.equals(cellAsText))
+        else if(ONE_CELL.equals(cellAsText))
             return "1";
         else if (TWO_CELL.equals(cellAsText))
             return "2";
-        else return "3";
+        else if(THREE_CELL.equals(cellAsText))
+            return "3";
+        else return "4";
 }
 }
