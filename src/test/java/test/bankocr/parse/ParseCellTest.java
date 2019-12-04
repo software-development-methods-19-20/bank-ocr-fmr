@@ -30,9 +30,9 @@ public class ParseCellTest {
     @Test
     void twoCell(){
         String twoAsText =
-                        " _ " +
-                        " _|" +
-                        "|_ ";
+                 " _ " +
+                 " _|" +
+                 "|_ ";
         assertThat(new Cell(twoAsText).toString(), is(equalTo("2")));
     }
 
@@ -43,6 +43,22 @@ public class ParseCellTest {
                         "|_|" +
                         "|_|";
         assertThat(new Cell(eightAsText).toString(), is(equalTo("8")));
+    @Test
+    void threeCell(){
+        String threeAsText =
+                " _ " +
+                " _|" +
+                " _|";
+        assertThat(new Cell(threeAsText).toString(), is(equalTo("3")));
+    }
+
+    @Test
+    void fourCell() {
+        String fourAsText =
+                "   " +
+                "|_|" +
+                "  |";
+        assertThat(new Cell(fourAsText).toString(), is(equalTo("4")));
     }
 
     @Test

@@ -18,6 +18,10 @@ public class Cell {
                     " _ " +
                     " _|" +
                     "|_ ";
+    private static final String THREE_CELL =
+                    " _ " +
+                    " _|" +
+                    " _|";
 
     private static final String EIGHT_CELL =
                     " _ " +
@@ -34,7 +38,7 @@ private String cellAsText;
         this.cellAsText = cellAsText;
     }
 
-
+@Override
 public String toString() {
 
         if(ZERO_CELL.equals(cellAsText))
@@ -47,6 +51,8 @@ public String toString() {
             return "8";
         else if (NINE_CELL.equals(cellAsText))
             return "9";
-        else return "3";
+        else if(THREE_CELL.equals(cellAsText))
+            return "3";
+        else return "4";
 }
 }
