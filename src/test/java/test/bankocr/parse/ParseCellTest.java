@@ -20,21 +20,29 @@ public class ParseCellTest {
 
     @Test
     void oneCell() {
-        String zeroAsText =
+        String oneAsText =
                         "   " +
                         "  |" +
                         "  |";
-        assertThat(new Cell(zeroAsText).toString(), is(equalTo("1")));
+        assertThat(new Cell(oneAsText).toString(), is(equalTo("1")));
     }
 
     @Test
     void twoCell(){
         String twoAsText =
-                " _ " +
-                        " _|" +
-                        "|_ ";
+                 " _ " +
+                 " _|" +
+                 "|_ ";
         assertThat(new Cell(twoAsText).toString(), is(equalTo("2")));
     }
+
+    @Test
+    void eightCell(){
+        String eightAsText =
+                        " _ " +
+                        "|_|" +
+                        "|_|";
+        assertThat(new Cell(eightAsText).toString(), is(equalTo("8")));
     @Test
     void threeCell(){
         String threeAsText =
@@ -52,4 +60,15 @@ public class ParseCellTest {
                 "  |";
         assertThat(new Cell(fourAsText).toString(), is(equalTo("4")));
     }
+
+    @Test
+    void nineCell(){
+        String nineAsText =
+                        " _ " +
+                        "|_|" +
+                        " _|";
+        assertThat(new Cell(nineAsText).toString(), is(equalTo("9")));
+    }
+
+
 }
