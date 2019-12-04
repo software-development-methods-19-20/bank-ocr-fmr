@@ -26,4 +26,13 @@ public class ParseCellTest {
                         "  |";
         assertThat(new Cell(zeroAsText).toString(), is(equalTo("1")));
     }
+
+    @Test
+    void twoCell(){
+        String zeroAsText =
+                " _ " +
+                        " _|" +
+                        "|_ ";
+        assertThat(new Cell(zeroAsText).toString(), is(equalTo(2)));
+    }
 }
