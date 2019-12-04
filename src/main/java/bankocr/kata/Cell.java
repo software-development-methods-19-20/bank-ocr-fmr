@@ -8,22 +8,24 @@ public class Cell {
                     "|_|";
 
     private static final String UNO_CELL =
-                            "   " +
-                            "  |" +
-                            "  |";
+                    "   " +
+                    "  |" +
+                    "  |";
 
     private static final String TWO_CELL =
-                " _ " +
-                        " _|" +
-                        "|_ ";
-    private String cellAsText;
+                    " _ " +
+                    " _|" +
+                    "|_ ";
+
+private String cellAsText;
 
     public Cell(String cellAsText) {
         this.cellAsText = cellAsText;
     }
 
-    @Override
-    public String toString() {
+
+public String toString() {
+
         if(ZERO_CELL.equals(cellAsText))
             return "0";
         else if(UNO_CELL.equals(cellAsText))
@@ -31,5 +33,5 @@ public class Cell {
         else if (TWO_CELL.equals(cellAsText))
             return "2";
         else return "3";
-    }
+}
 }
