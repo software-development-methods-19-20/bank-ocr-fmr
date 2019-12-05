@@ -21,6 +21,12 @@ public class Entry {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         cells.forEach(cell -> stringBuilder.append(cell.toString()));
-        return stringBuilder.toString();
+        String toReturn = stringBuilder.toString();
+        if (toReturn.contains("?")) {
+            toReturn += " ILL";
+        } else if (!ValidateEntry.validateEntry(toReturn)) {
+            toReturn += " ERR";
+        }
+        return toReturn;
     }
 }
