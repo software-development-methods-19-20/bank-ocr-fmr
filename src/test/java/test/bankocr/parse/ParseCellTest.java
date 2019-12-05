@@ -28,37 +28,65 @@ public class ParseCellTest {
     }
 
     @Test
-    void twoCell(){
+    void twoCell() {
         String twoAsText =
-                 " _ " +
-                 " _|" +
-                 "|_ ";
+                        " _ " +
+                        " _|" +
+                        "|_ ";
         assertThat(new Cell(twoAsText).toString(), is(equalTo("2")));
     }
 
     @Test
-    void eightCell(){
-        String eightAsText =
-                        " _ " +
-                        "|_|" +
-                        "|_|";
-        assertThat(new Cell(eightAsText).toString(), is(equalTo("8")));
-    @Test
     void threeCell(){
         String threeAsText =
-                " _ " +
-                " _|" +
-                " _|";
+                        " _ " +
+                        " _|" +
+                        " _|";
         assertThat(new Cell(threeAsText).toString(), is(equalTo("3")));
     }
 
     @Test
     void fourCell() {
         String fourAsText =
-                "   " +
-                "|_|" +
-                "  |";
+                        "   " +
+                        "|_|" +
+                        "  |";
         assertThat(new Cell(fourAsText).toString(), is(equalTo("4")));
+    }
+
+    void fiveCell() {
+        String fiveAsText =
+                        " _ " +
+                        "|_ " +
+                        " _|";
+        assertThat(new Cell(fiveAsText).toString(), is(equalTo("5")));
+    }
+
+    @Test
+    void sixCell() {
+        String sixAsText =
+                        " _ " +
+                        "|_ " +
+                        "|_|";
+        assertThat(new Cell(sixAsText).toString(), is(equalTo("6")));
+    }
+
+    @Test
+    void sevenCell() {
+        String sevenAsText =
+                        " _ " +
+                        "  |" +
+                        "  |";
+        assertThat(new Cell(sevenAsText).toString(), is(equalTo("7")));
+    }
+
+    @Test
+    void eightCell() {
+        String eightAsText =
+                " _ " +
+                        "|_|" +
+                        "|_|";
+        assertThat(new Cell(eightAsText).toString(), is(equalTo("8")));
     }
 
     @Test
@@ -69,6 +97,4 @@ public class ParseCellTest {
                         " _|";
         assertThat(new Cell(nineAsText).toString(), is(equalTo("9")));
     }
-
-
 }

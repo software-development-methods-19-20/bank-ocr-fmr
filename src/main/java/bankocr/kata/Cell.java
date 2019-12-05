@@ -1,7 +1,5 @@
 package bankocr.kata;
 
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 public class Cell {
 
     private static final String ZERO_CELL =
@@ -18,10 +16,31 @@ public class Cell {
                     " _ " +
                     " _|" +
                     "|_ ";
+
     private static final String THREE_CELL =
                     " _ " +
                     " _|" +
                     " _|";
+
+    private static final String FOUR_CELL =
+                    "   " +
+                    "|_|" +
+                    "  |";
+
+    private static final String FIVE_CELL =
+                    " _ " +
+                    "|_ " +
+                    " _|";
+
+    private static final String SIX_CELL =
+                    " _ " +
+                    "|_ " +
+                    "|_|";
+
+    private static final String SEVEN_CELL =
+                    " _ " +
+                    "  |" +
+                    "  |";
 
     private static final String EIGHT_CELL =
                     " _ " +
@@ -32,6 +51,8 @@ public class Cell {
                     " _ " +
                     "|_|" +
                     " _|";
+
+
 private String cellAsText;
 
     public Cell(String cellAsText) {
@@ -47,12 +68,20 @@ public String toString() {
             return "1";
         else if (TWO_CELL.equals(cellAsText))
             return "2";
+        else if(THREE_CELL.equals(cellAsText))
+            return "3";
+        else if(FOUR_CELL.equals(cellAsText))
+            return "4";
+        else if (FIVE_CELL.equals(cellAsText))
+            return "5";
+        else if (SIX_CELL.equals(cellAsText))
+            return "6";
+        else if(SEVEN_CELL.equals(cellAsText))
+            return "7";
         else if (EIGHT_CELL.equals(cellAsText))
             return "8";
         else if (NINE_CELL.equals(cellAsText))
             return "9";
-        else if(THREE_CELL.equals(cellAsText))
-            return "3";
-        else return "4";
-}
+        else return "err";
+    }
 }
