@@ -40,16 +40,20 @@ public class AmbiguousEntry {
         
         List<Integer> cellList = Converter.stringToIntegerList(entry);
         for(int i=0; i<cellList.size(); i++) {
+
             int currentNumber = cellList.get(i);
+
             List<Integer> currentNumbersSubs = subsList.get(currentNumber);
+
             for(int j=0; j<currentNumbersSubs.size(); j++) {
+
                 List<Integer> attempt = new ArrayList<>();
-                for(int k=0; k<9; k++) {
-                    attempt.add(0);
+
+
+                for(int k=0; k< 9; k++) {
+                    attempt.add(cellList.get(k));
                 }
-                for(int k=0; k<attempt.size(); k++) {
-                    attempt.set(k, cellList.get(k));
-                }
+
                 attempt.set(i, subsList.get(currentNumber).get(j));
                 if(ValidateEntry.checkSum(attempt)) {
                     toReturn.add(Converter.integerListToString(attempt));
