@@ -1,5 +1,7 @@
 package bankocr.kata;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,12 @@ public class Entry {
         if (toReturn.contains("?")) {
             toReturn += " ILL";
         } else if (!ValidateEntry.validateEntry(toReturn)) {
-            toReturn += " ERR";
+            List<String> correctEntries = AmbiguousEntry.correctEntries(toReturn);
+            if(correctEntries.size() == 1) {
+                toReturn = String.valueOf(correctEntries.get(0));
+            } else if (correctEntries.size() > 1) {
+                toReturn = toReturn + " AMB " + correctEntries.toString();
+            } else toReturn += " ERR";
         }
         return toReturn;
     }

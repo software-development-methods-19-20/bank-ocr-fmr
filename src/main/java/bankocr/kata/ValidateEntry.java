@@ -1,26 +1,22 @@
 package bankocr.kata;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ValidateEntry {
     
-    private static ArrayList<Integer> charConvert(String input) {
+    static boolean checkSum(List<Integer> input) {
+        int sum = 0;
         
-        ArrayList<Integer> result = new ArrayList<>();
-        for(int i = 0; i < input.length(); i++) {
-            int element = Character.getNumericValue(input.charAt(i));
-            result.add(element);
+        for(int i = 0; i < input.size(); i++) {
+            sum += input.get(i) * (input.size() - i);
         }
-        return result;
+        return (sum % 11 == 0);
     }
 
     public static boolean validateEntry(String input) {
+        ArrayList<Integer> validate = Converter.stringToIntegerList(input);
         
-        ArrayList<Integer> validate = charConvert(input);
-        int sum = 0;
-        for(int i = 0; i < validate.size(); i++) {
-            sum += validate.get(i) * (validate.size() - i);
-        }
-        return (sum % 11 == 0);
+        return checkSum(validate);
     }
 }

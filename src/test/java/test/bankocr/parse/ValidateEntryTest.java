@@ -21,14 +21,6 @@ public class ValidateEntryTest {
         Entry entry = reader.newReadEntry();
         assertThat(entry.toString(), is(equalTo("000000051")));
     }
-
-    @Test
-    void testErrNumber() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("useCaseThreeErr");
-        EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
-        Entry entry = reader.newReadEntry();
-        assertThat(entry.toString(), is(equalTo("000000052 ERR")));
-    }
     
     @Test
     void testIllNumber() throws Exception {
@@ -36,5 +28,21 @@ public class ValidateEntryTest {
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
         assertThat(entry.toString(), is(equalTo("1234?678? ILL")));
+    }
+    
+    @Test
+    void testCorrection() throws Exception {
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("useCaseFour");
+        EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
+        Entry entry = reader.newReadEntry();
+        assertThat(entry.toString(), is(equalTo("711111111")));
+    }
+
+    @Test
+    void testAmbCorrection() throws Exception {
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("useCaseFourAmb");
+        EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
+        Entry entry = reader.newReadEntry();
+        assertThat(entry.toString(), is(equalTo("888888888 AMB [888886888, 888888988, 888888880]")));
     }
 }
