@@ -15,14 +15,11 @@ public class Converter {
     }
 
     static String integerListToString(List<Integer> input) {
-        String toReturn = "";
 
-        String result = input.stream().map(Character::charValue).collect(Collectors.)
-
-        for(int i=0; i<input.size(); i++) {
-            toReturn += String.valueOf(input.get(i));
-        }
-        return toReturn;
+        StringBuilder toReturn = new StringBuilder();
+        input.forEach(toReturn::append);
+        
+        return toReturn.toString();
     }
     
 }
