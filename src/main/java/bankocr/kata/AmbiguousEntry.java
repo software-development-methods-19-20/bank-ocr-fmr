@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AmbiguousEntry {
     
@@ -37,8 +38,9 @@ public class AmbiguousEntry {
     
     public static List<String> correctEntries(String entry) {
         List<String> toReturn = new ArrayList<>();
-        
-        List<Integer> cellList = Converter.stringToIntegerList(entry);
+        List<Integer> cellList =
+                Arrays.stream(entry.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        //List<Integer> cellList = Converter.stringToIntegerList(entry);
         for(int i=0; i<cellList.size(); i++) {
 
             int currentNumber = cellList.get(i);
