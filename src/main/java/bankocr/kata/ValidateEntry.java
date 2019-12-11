@@ -2,15 +2,18 @@ package bankocr.kata;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ValidateEntry {
     
     static boolean checkSum(List<Integer> input) {
-        int sum = 0;
-        
-        for(int i = 0; i < input.size(); i++) {
-            sum += input.get(i) * (input.size() - i);
-        }
+
+        int sum = IntStream.range(0, input.size()).
+                parallel().
+                map(id -> input.get(id) * (input.size() - id)).
+                reduce(0, Integer::sum);
         return (sum % 11 == 0);
     }
 
