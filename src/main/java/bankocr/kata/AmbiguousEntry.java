@@ -1,10 +1,14 @@
 package bankocr.kata;
 
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class AmbiguousEntry {
     
@@ -40,7 +44,7 @@ public class AmbiguousEntry {
         List<String> toReturn = new ArrayList<>();
         List<Integer> cellList =
                 Arrays.stream(entry.split("")).map(Integer::parseInt).collect(Collectors.toList());
-        //List<Integer> cellList = Converter.stringToIntegerList(entry);
+
         for(int i=0; i<cellList.size(); i++) {
 
             int currentNumber = cellList.get(i);
@@ -49,14 +53,10 @@ public class AmbiguousEntry {
 
             for(int j=0; j<currentNumbersSubs.size(); j++) {
 
-                List<Integer> attempt = new ArrayList<>();
-
-
-                for(int k=0; k< 9; k++) {
-                    attempt.add(cellList.get(k));
-                }
+                List<Integer> attempt = cellList.stream().collect(Collectors.toList());
 
                 attempt.set(i, subsList.get(currentNumber).get(j));
+
                 if(ValidateEntry.checkSum(attempt)) {
                     toReturn.add(Converter.integerListToString(attempt));
                 }
