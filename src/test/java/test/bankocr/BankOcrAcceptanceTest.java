@@ -24,6 +24,6 @@ public class BankOcrAcceptanceTest {
 
         application.parseFile(Path.of(allOnesSingleEntry.toURI()));
 
-        application.showsAccountNumber("111111111\n");
+        application.showsAccountNumber("711111111\r\n");
     }
 }
