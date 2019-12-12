@@ -1,7 +1,5 @@
 package bankocr.kata;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +22,13 @@ public class Entry {
         StringBuilder stringBuilder = new StringBuilder();
         cells.forEach(cell -> stringBuilder.append(cell.toString()));
         String toReturn = stringBuilder.toString();
+        /*
         if (toReturn.contains("?")) {
             toReturn += " ILL";
-        } else if (!ValidateEntry.validateEntry(toReturn)) {
+        }
+        */
+        /*
+        else if (!ValidateEntry.validateEntry(toReturn)) {
             List<String> correctEntries = AmbiguousEntry.correctEntries(toReturn);
             if(correctEntries.size() == 1) {
                 toReturn = String.valueOf(correctEntries.get(0));
@@ -34,6 +36,25 @@ public class Entry {
                 toReturn = toReturn + " AMB " + correctEntries.toString();
             } else toReturn += " ERR";
         }
+         */
+        return toReturn;
+    }
+    
+    public String displayQuestionMarkForWrongCells() {
+        String toReturn = this.toString();
+        if (toReturn.contains("?")) {
+            toReturn += " ILL";
+        }
+        
+        return toReturn;
+    }
+    
+    public String displayErrMessageForWrongCheckSum() {
+        String toReturn = this.toString();
+        if (!ValidateCheckSum.validateCheckSum(this.toString())) {
+            toReturn += " ERR";
+        }
+        
         return toReturn;
     }
 }
