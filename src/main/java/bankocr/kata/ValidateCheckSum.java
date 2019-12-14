@@ -1,7 +1,6 @@
 package bankocr.kata;
 
 import java.util.List;
-import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 public class ValidateCheckSum {
@@ -18,7 +17,7 @@ public class ValidateCheckSum {
 
     static boolean validateCheckSum(String input) {
         
-        ArrayList<Integer> validate = Converter.stringToIntegerList(input);
+        List<Integer> validate = StringListConverter.stringToIntegerList(input);
         return checkSum(validate);
     }
 }
