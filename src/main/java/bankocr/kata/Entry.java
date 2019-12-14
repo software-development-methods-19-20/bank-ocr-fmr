@@ -23,11 +23,6 @@ public class Entry {
         cells.forEach(cell -> stringBuilder.append(cell.toString()));
         String toReturn = stringBuilder.toString();
         /*
-        if (toReturn.contains("?")) {
-            toReturn += " ILL";
-        }
-        */
-        /*
         else if (!ValidateEntry.validateEntry(toReturn)) {
             List<String> correctEntries = AmbiguousEntry.correctEntries(toReturn);
             if(correctEntries.size() == 1) {
@@ -53,6 +48,21 @@ public class Entry {
         String toReturn = this.toString();
         if (!ValidateCheckSum.validateCheckSum(this.toString())) {
             toReturn += " ERR";
+        }
+        
+        return toReturn;
+    }
+    
+    public String displayCorrectEntriesForWrongCheckSum() {
+        String toReturn = this.toString();
+        
+        if (!ValidateCheckSum.validateCheckSum(this.toString())) {
+            List<String> correctEntries = CorrectEntries.correctEntries(toReturn);
+            if(correctEntries.size() == 1) {
+                toReturn = String.valueOf(correctEntries.get(0));
+            } else if (correctEntries.size() > 1) {
+                toReturn = toReturn + " AMB " + correctEntries.toString();
+            }
         }
         
         return toReturn;

@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AmbiguousEntry {
+public class CorrectEntries {
     
     private static final List<Integer> substituteZero = Arrays.asList(8);
     private static final List<Integer> substituteOne = Arrays.asList(7);

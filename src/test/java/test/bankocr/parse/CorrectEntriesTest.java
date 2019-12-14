@@ -12,21 +12,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class CheckSumTest {
+public class CorrectEntriesTest {
     
     @Test
     void testCorrection() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("useCaseFour");
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("correctEntriesOne");
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
-        assertThat(entry.toString(), is(equalTo("711111111")));
+        assertThat(entry.displayCorrectEntriesForWrongCheckSum(), is(equalTo("711111111")));
     }
 
     @Test
     void testAmbCorrection() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("useCaseFourAmb");
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("correctEntriesAmb");
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
-        assertThat(entry.toString(), is(equalTo("888888888 AMB [888886888, 888888988, 888888880]")));
+        assertThat(entry.displayCorrectEntriesForWrongCheckSum(), is(equalTo("888888888 AMB [888886888, 888888988, 888888880]")));
     }
 }
