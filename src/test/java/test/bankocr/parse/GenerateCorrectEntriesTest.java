@@ -12,29 +12,29 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
-public class MessagesForIncorrectEntriesTest {
-
+public class GenerateCorrectEntriesTest {
+    
     @Test
-    void testCheckSum() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("checkSumCorrectEntry");
+    void testErrCorrection() throws Exception {
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("allOnesEntry");
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
-        assertThat(entry.displayErrMessageForWrongCheckSum(), is(equalTo("000000051")));
+        assertThat(entry.displayCorrectEntriesForErrMessage(), is(equalTo("711111111")));
     }
 
     @Test
-    void testWrongCheckSum() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("wrongCheckSumEntry");
+    void testAmbCorrection() throws Exception {
+        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("allEightsEntry");
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
-        assertThat(entry.displayErrMessageForWrongCheckSum(), is(equalTo("000000052 ERR")));
+        assertThat(entry.displayCorrectEntriesForErrMessage(), is(equalTo("888888888 AMB [888886888, 888888988, 888888880]")));
     }
-
+    
     @Test
-    void testIllNumber() throws Exception {
+    void testIllCorrection() throws Exception {
         URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("wrongCellEntry");
         EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
         Entry entry = reader.newReadEntry();
-        assertThat(entry.displayIllMessageForWrongCells(), is(equalTo("1234?678? ILL")));
+        assertThat(entry.displayCorrectEntriesForIllMessage(), is(equalTo("490867715")));
     }
 }

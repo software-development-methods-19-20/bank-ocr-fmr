@@ -1,5 +1,9 @@
 package bankocr.kata;
 
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Cell {
 
     private static final String ZERO_CELL =
@@ -51,9 +55,14 @@ public class Cell {
                     " _ " +
                     "|_|" +
                     " _|";
+    
+    private static final List<String> correctCellsAsTextList = Arrays.asList(ZERO_CELL,  ONE_CELL,   TWO_CELL,
+                                                                             THREE_CELL, FOUR_CELL,  FIVE_CELL,
+                                                                             SIX_CELL,   SEVEN_CELL, EIGHT_CELL,
+                                                                             NINE_CELL);                                                                   
 
     private String cellAsText;
-
+    
     public Cell(String cellAsText) {
         this.cellAsText = cellAsText;
     }
@@ -82,5 +91,22 @@ public class Cell {
         else if (NINE_CELL.equals(cellAsText))
             return "9";
         else return "?";
+    }
+
+    private static int numberOfDifferentCharacters(String wrongCellAsText, String correctCellAsText) {
+        int counter = 0;
+        int cellLength = 9;
+
+        for(int i=0; i<cellLength; i++) {
+            if(wrongCellAsText.charAt(i) != correctCellAsText.charAt(i)) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+    
+    static List<Cell> getListOfPossibleCells(Cell wrongCell) {
+        return correctCellsAsTextList.stream().filter(cell -> numberOfDifferentCharacters(cell, wrongCell.cellAsText) == 1)
+                .map(Cell::new).collect(Collectors.toList());
     }
 }

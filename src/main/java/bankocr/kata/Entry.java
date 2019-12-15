@@ -26,7 +26,7 @@ public class Entry {
         return toReturn;
     }
     
-    public String displayQuestionMarkForWrongCells() {
+    public String displayIllMessageForWrongCells() {
         String toReturn = this.toString();
         if (toReturn.contains("?")) {
             toReturn += " ILL";
@@ -44,7 +44,7 @@ public class Entry {
         return toReturn;
     }
     
-    public String displayCorrectEntriesForWrongCheckSum() {
+    public String displayCorrectEntriesForErrMessage() {
         String toReturn = this.toString();
         
         if (!ValidateCheckSum.validateCheckSum(toReturn)) {
@@ -57,5 +57,26 @@ public class Entry {
         }
         
         return toReturn;
+    }
+    
+    public String displayCorrectEntriesForIllMessage() {
+        String tmp = this.toString();
+        
+        int wrongCellPosition = tmp.indexOf("?");
+        Cell wrongCell = cells.get(wrongCellPosition);
+        List<Cell> possibleCells = Cell.getListOfPossibleCells(wrongCell);
+        
+        if(possibleCells.isEmpty()) {
+            return "ILL";
+        } else {
+            int positionInPossibleCells = 0;
+            do {
+                this.cells.set(wrongCellPosition, possibleCells.get(positionInPossibleCells));
+                tmp = this.toString();
+                positionInPossibleCells++;
+            } while (!ValidateCheckSum.validateCheckSum(tmp));
+
+            return tmp;
+        }
     }
 }
