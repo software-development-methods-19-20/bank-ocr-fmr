@@ -56,10 +56,10 @@ public class Cell {
                     "|_|" +
                     " _|";
     
-    private static final List<String> correctCellsAsTextList = Arrays.asList(ZERO_CELL,  ONE_CELL,   TWO_CELL,
-                                                                             THREE_CELL, FOUR_CELL,  FIVE_CELL,
-                                                                             SIX_CELL,   SEVEN_CELL, EIGHT_CELL,
-                                                                             NINE_CELL);                                                                   
+    static final List<String> correctCellsAsTextList = Arrays.asList(ZERO_CELL,  ONE_CELL,   TWO_CELL,
+                                                                     THREE_CELL, FOUR_CELL,  FIVE_CELL,
+                                                                     SIX_CELL,   SEVEN_CELL, EIGHT_CELL,
+                                                                     NINE_CELL);                                                                   
 
     private String cellAsText;
     
