@@ -29,12 +29,5 @@ public class MessagesForIncorrectEntriesTest {
         Entry entry = reader.newReadEntry();
         assertThat(entry.displayErrMessageForWrongCheckSum(), is(equalTo("000000052 ERR")));
     }
-
-    @Test
-    void testIllNumber() throws Exception {
-        URL numberEntry = BankOcrAcceptanceTest.class.getClassLoader().getResource("wrongCellEntry");
-        EntryReader reader = new EntryReader(Path.of(numberEntry.toURI()));
-        Entry entry = reader.newReadEntry();
-        assertThat(entry.displayIllMessageForWrongCells(), is(equalTo("1234?678? ILL")));
-    }
+    
 }
